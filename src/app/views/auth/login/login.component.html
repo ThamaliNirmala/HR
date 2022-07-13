@@ -1,142 +1,126 @@
-<body>
-  <div class="d-lg-flex half">
-    <div
-      class="bg order-2 order-md-1"
-      style="background-image: url('assets/bg_1.png')"
-    ></div>
-    <div class="contents order-1 order-md-2">
-      <div class="container">
-        <div class="row align-items-center justify-content-center">
-          <div class="col-md-7">
-            <br />
-            <strong class="topic"> <h1>LOGIN</h1></strong><br />
-            <hr />
+<div class="d-lg-flex half">
+  <div
+    class="bg order-2 order-md-1"
+    style="background-image: url('assets/bg_1.png')"
+  ></div>
+  <div class="contents order-1 order-md-2">
+    <div class="container">
+      <div class="row align-items-center justify-content-center">
+        <div class="col-md-7 lg" >
+          <div class="login">
+            <h1 >LOGIN</h1>
+          </div>
+          <hr />
 
-            <form name="hrLoginForm" #hrLoginForm="ngForm" (ngSubmit)="login()">
-              <div class="form-group first label1">
-                <label for="id" style="font-weight: bold">Employee ID</label>
-                <input
-                  type="text"
-                  class="form-control input1"
-                  id="id"
-                  name="id"
-                  #id="ngModel"
-                  [(ngModel)]="hr.id"
-                  minlength="6"
-                  required
-                />
-                <div
-                  *ngIf="id.invalid && (id.dirty || id.touched)"
-                  class="text-danger"
-                >
-                  <div *ngIf="id.errors?.['required']">ID is required.</div>
-                </div>
-                <div *ngIf="id.errors?.['minlength']" class="text-danger">
-                  ID must be at least 6 characters long.
-                </div>
-              </div>
-              <div class="form-group last mb-3 label1">
-                <label for="password" style="margin-top: 20px">Password</label>
-                <input
-                  type="{{ passwordType }}"
-                  class="form-control input1"
-                  id="password"
-                  name="password"
-                  minlength="8"
-                  pattern="^(?=\D*\d)(?=[^a-z]*[a-z])(?=[^A-Z]*[A-Z]).{8,30}$"
-                  required
-                  #password="ngModel"
-                  [(ngModel)]="hr.password"
-                />
-                <div
-                  *ngIf="
-                    password.invalid && (password.dirty || password.touched)
-                  "
-                  class="text-danger"
-                >
-                  <div *ngIf="password.errors?.['required']">
-                    Password is required.
-                  </div>
-                  <div *ngIf="password.errors?.['pattern']">
-                    Password should be contain 1 digit, 1 lowercase, 1 uppercase, more than 8 chars
-                  </div>
-                </div>
-                <span
-                  *ngIf="hr.password"
-                  (click)="showPassword()"
-                  class="eyeIcon"
-                >
-                  <fa-icon [icon]="faEyeSlash" style="cursor: pointer">
-                  </fa-icon>
-                </span>
-              </div>
-              <div>
-                <span
-                  style="
-                    color: #736a85;
-                    letter-spacing: 0.2px;
-                    font-size: 12px;
-                    line-height: 18px;
-                    font-weight: 400;
-                  "
-                  >Enter Your Tempory Password</span
-                >
-              </div>
-              <br />
-
-              <div class="d-flex mb-5 align-items-center">
-                <div class="form-group">
-                  <div class="form-check">
-                    <input
-                      class="form-check-input"
-                      type="checkbox"
-                      id="gridCheck"
-                    />
-                    <label
-                      class="form-check-label"
-                      style="
-                        color: #696f79;
-                        font-family: 'Inter', sans-serif;
-                        font-size: 16px;
-                        line-height: 19px;
-                        font-style: normal;
-                      "
-                      for="gridCheck"
-                    >
-                      &nbsp; Remember Me
-                    </label>
-                  </div>
-                </div>
-
-                <span class="ml-auto"
-                  ><a
-                    [routerLink]="'/auth/forgot-password'"
-                    class="forgot-pass"
-                    style="
-                      text-decoration: none;
-                      font-family: 'Inter', sans-serif;
-                      font-size: 16px;
-                      line-height: 19px;
-                      font-weight: 500;
-                      color: #1565d8;
-                    "
-                    >Forgot Password</a
-                  ></span
-                >
-              </div>
-
+          <form name="hrLoginForm" #hrLoginForm="ngForm" (ngSubmit)="login()">
+            <div class="form-group first label1">
+              <label for="id" style="font-weight: bold">Employee ID</label>
               <input
-                type="submit"
-                value="Log In"
-                class="btn btn-block btn-primary"
+                type="text"
+                class="form-control input-text"
+                id="id"
+                name="id"
+                #id="ngModel"
+                [(ngModel)]="hr.id"
+                minlength="6"
+                required
               />
-            </form>
-          </div>
-          <div class="logo">
-            <img src="assets/logo.svg" alt="" />
-          </div>
+              <div
+                *ngIf="id.invalid && (id.dirty || id.touched)"
+                class="text-danger"
+              >
+                <div *ngIf="id.errors?.['required']">ID is required.</div>
+              </div>
+              <div *ngIf="id.errors?.['minlength']" class="text-danger">
+                ID must be at least 6 characters long.
+              </div>
+            </div>
+            <div class="form-group last mb-3 label2">
+              <label for="password" style="margin-top: 20px">Password</label>
+              <input
+                type="{{ passwordType }}"
+                class="form-control input-password"
+                id="password"
+                name="password"
+                minlength="8"
+                pattern="^(?=\D*\d)(?=[^a-z]*[a-z])(?=[^A-Z]*[A-Z]).{8,30}$"
+                required
+                #password="ngModel"
+                [(ngModel)]="hr.password"
+              />
+              <div
+                *ngIf="
+                  password.invalid && (password.dirty || password.touched)
+                "
+                class="text-danger"
+              >
+                <div *ngIf="password.errors?.['required']">
+                  Password is required.
+                </div>
+                <div *ngIf="password.errors?.['pattern']">
+                  Password should be contain 1 digit, 1 lowercase, 1 uppercase, more than 8 chars
+                </div>
+              </div>
+              <span
+                *ngIf="hr.password"
+                (click)="showPassword()"
+                class="eyeIcon"
+              >
+                <fa-icon [icon]="faEyeSlash" style="cursor: pointer">
+                </fa-icon>
+              </span>
+            </div>
+
+            <div class="d-flex mb-5 align-items-center">
+              <div class="form-group">
+                <div class="form-check">
+                  <input
+                    class="form-check-input"
+                    type="checkbox"
+                    id="gridCheck"
+                  />
+                  <label
+                    class="label-checkbox"
+                    for="gridCheck"
+                  >
+                  Remember Me
+                  </label>
+                </div>
+              </div>
+
+              <div>
+                <span class="ml-auto"
+                ><a
+                  [routerLink]="'/auth/forgot-password'"
+                  class="forgot-pass"
+                  style="
+                    text-decoration: none;
+                    font-family: 'Inter', sans-serif;
+                    font-size: 16px;
+                    line-height: 19px;
+                    font-weight: 500;
+                    color: #1565d8;
+                  "
+                  >Forgot Password</a
+                ></span
+              >
+              </div>
+            </div>
+
+            <div>
+              <input
+              type="submit"
+              value="Log In"
+              class="btn btn-block btn-primary"
+            />
+            </div>
+            
+              <img src="assets/logo.png" alt="logo" class="logo"/>
+            
+          </form>
         </div>
+        
       </div>
     </div>
   </div>
-</body>
+</div>
